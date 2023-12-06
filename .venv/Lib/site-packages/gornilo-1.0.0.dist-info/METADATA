@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: gornilo
+Version: 1.0.0
+Summary: AD CTFs checker wrapper
+Home-page: https://github.com/Hackerdom/Gornilo
+Author: rx00
+Author-email: rx00@hackerdom.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENCE
+
+# Gornilo-Checker
+
+This is a checker wrapper lib.
+
+#### Features:
+
+- no exit-code/chk-sys interface requirements
+- object model
+- built-in error handling
+- asyncio support
+- stdout redirect (print defaults for stderr)
+- testing output
+
+
+#### How to: 
+
+See `checker.py` :) 
+Use TEST for debugging 
+ 

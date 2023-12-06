@@ -1,0 +1,10 @@
+checkers:
+  - name: hyperborea
+    path: checkers/hyperborea-legends/hyperborea-legends.checker.py
+
+  - name: rusi_trainer
+    path: checkers/rusi-trainer/rusi-trainer.checker.py
+
+teams:
+  - name: sigan
+    ip: 192.168.1.135

@@ -1,0 +1,52 @@
+services:
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.3
+    entrypoint: /usr/local/bin/etcd
+
+    command:
+      - '--name=etcd-1'
+      - '--initial-advertise-peer-urls=http://etcd:2380'
+      - '--listen-peer-urls=http://0.0.0.0:2380'
+      - '--listen-client-urls=http://0.0.0.0:2379'
+      - '--advertise-client-urls=http://etcd:2379'
+      - '--heartbeat-interval=250'
+      - '--election-timeout=1250'
+      - '--initial-cluster=etcd-1=http://etcd:2380'
+      - '--initial-cluster-state=new'
+      - '--initial-cluster-token=etcd-cluster-token'
+    volumes:
+      - etcd1:/etcd_data
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 32768
+        hard: 32768
+    logging:
+      options:
+        max-file: "2"
+        max-size: "5m"
+    mem_limit: 1G
+    memswap_limit: 1G
+    cpu_count: 1
+
+  rustest:
+    build: "./"
+    ports:
+      - 13337:3000
+    restart: unless-stopped
+    environment:
+      - ETCD_HOST=http://etcd:2379
+    ulimits:
+      nofile:
+        soft: 32768
+        hard: 32768
+    logging:
+      options:
+        max-file: "2"
+        max-size: "5m"
+    mem_limit: 1G
+    memswap_limit: 1G
+    cpu_count: 1
+
+volumes:
+  etcd1:
